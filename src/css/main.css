@@ -1,0 +1,32 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#upBorder {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 15%;
+}
+
+#downBorder {
+    position: fixed;
+    width: 100%;
+    top: 15%;
+    height: 85%;
+}
+
+.main-body-back-ground {
+    background-color: #bbf2ff;
+}
+
+.top-body-back-ground {
+    background-color: #0dcaf0;
+}
+
+.field {
+    font-weight: bold;
+}
