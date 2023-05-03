@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nothings up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/messages.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="upBorder" class="top-body-back-ground"></div>
+    <div id="downBorder" class="main-body-back-ground"></div>
+    <button type="submit" class="btn btn-primary logout-btn">Logout</button>
+    <div class="modal fade" id="newModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newModalLabel">Add new contact</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Contact's Identifier"
+                            aria-label="Contact's Identifier">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-12" id="conversations-section">
+                <header class="left-header">
+                    <div class="media">
+                        <img class="avatar" src="photos/no_img.png" alt="avatar">
+                        <div class="icon">
+                            <svg data-bs-toggle="modal" data-bs-target="#newModal" width="32" height="32"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                                <path
+                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+                            </svg>
+                        </div>
+                    </div>
+                </header>
+                <main class="conversations">
+                    <div class="media">
+                        <img class="avatar" src="photos/Yontan.png" alt="avatar">
+                        <div class="media-body">
+                            <div class="name">Yonatan </div>
+                            <div class="time">26/04/23 22:50</div>
+                            <div class="last-msg">it went awfull - 99</div>
+                        </div>
+                    </div>
+                    <div class="media current-conversation">
+                        <img class="avatar" src="photos/Eliyahu.png" alt="avatar">
+                        <div class="media-body">
+                            <div class="name">Eliyahu </div>
+                            <div class="time">27/04/23 10:31</div>
+                            <div class="last-msg">don't tell to Yuval</div>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <img class="avatar" src="photos/Yuval.png" alt="avatar">
+                        <div class="media-body">
+                            <div class="name">Yuval </div>
+                            <div class="time">26/04/23 23:14</div>
+                            <div class="last-msg">love you mate</div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div class="col-lg-9 col-md-8 col-12" id="messages-section">
+                <header class="right-header">
+                    <div class="media">
+                        <img class="avatar" src="photos/Eliyahu.png" alt="avatar">
+                        <div class="media-body">
+                            Eliyahu
+                        </div>
+                    </div>
+                </header>
+                <main class="messages">
+                    <div class="real-messages">
+                        <div class="message message-left">
+                            <div class="text">I need to tell you both something</div>
+                            <div class="time">10:30</div>
+                        </div>
+                        <div class="message message-right">
+                            <div class="text">Don't tell to Yuval</div>
+                            <div class="time">10:31</div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="footer">
+                    <div class="input-group ">
+                        <input type="text" class="form-control" placeholder="Write a message"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary footer-btn" type="button">Send</button>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
