@@ -21,8 +21,6 @@ function Register() {
         }
     }
 
-
-
     function handleFileInputChange(e) {
         const selectedFile = e.target.files[0];
         const reader = new FileReader();
