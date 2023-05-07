@@ -1,6 +1,7 @@
 import Background from "../background/Background.js"
 import FormBottom from "../formBottom/FormBottom.js"
 import LoginForm from "../loginForm/LoginForm.js";
+import "./Login.css"
 
 function Login() {
     return (
