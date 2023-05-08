@@ -1,6 +1,6 @@
 import FormItem from "../formItem/FormItem.js"
 
-function LoginForm({ type: formType, labelText: labelText, inputText: inputText }) {
+function LoginForm({ type: formType, labelText, inputText }) {
     return (
         <div className="col-md-6">
             <FormItem type={formType} labelText={labelText} inputText={inputText} />

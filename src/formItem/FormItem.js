@@ -1,4 +1,4 @@
-function FormItem({ type: formType, labelText: labelText, inputText: inputText, value: value, onChange: onChange, onKeyUp: onKeyUp }) {
+function FormItem({ type: formType, labelText, inputText, value, onChange, onKeyUp, error }) {
     return (
         <div className="row">
             <div className="col-12">
@@ -7,6 +7,7 @@ function FormItem({ type: formType, labelText: labelText, inputText: inputText, 
             <div className="col-12">
                 <input type={formType} className="form-control" placeholder={inputText} value={value} onChange={onChange} onKeyUp={onKeyUp} required></input>
             </div>
+            <div className="col-12 error-message">{error}</div>
         </div>
     );
 }

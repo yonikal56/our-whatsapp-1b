@@ -63,7 +63,7 @@ function Register() {
                             onKeyUp={handleConfirmPasswordKeyUp}
                         />
                         {confirmPassword !== password && (
-                            <div className="col-md-12 error-message">The passwords do not match.</div>
+                            <div className="col-md-12 error-message"></div>
                         )}
                         <div className="col-md-6 mb-3">
                             <label className="form-label field">Profile Picture:</label>
@@ -76,9 +76,9 @@ function Register() {
                             ></input>
                         </div>
                         <div className="col-md-6">
-                            <img id="selectedImage" src={profilePicture}></img>
+                            <img id="selectedImage" src={profilePicture} alt="avatar"></img>
                             {!profilePicture && (
-                                <img id="defaultImage" src="photos/no_img.png"></img>
+                                <img id="defaultImage" src="photos/no_img.png" alt="avatar"></img>
                             )}
                         </div>
                         <FormBottom

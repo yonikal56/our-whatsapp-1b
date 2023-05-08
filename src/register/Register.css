@@ -44,9 +44,5 @@
 .error-message {
     color: red;
     font-size: 12px;
-    margin-top: 4px;
-    position: absolute;
-    top: 170px;
-    left: calc(50% + 280px);
-    transform: translateX(-50%);
+    padding-left: 10px;
 }
