@@ -215,7 +215,7 @@
       padding: 6px 12px;
       font-size: 14px;
       cursor: pointer;
-      bottom: auto;
+      bottom: auto !important;
   }
 
   @media (max-width: 767px) {

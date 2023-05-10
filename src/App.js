@@ -6,13 +6,15 @@ import Messages from "./messages/Messages";
 
 function App() {
   const [users, setUsers] = useState([])
+  const [currentUser, setCurrentUser] = useState('')
+  console.log(users, currentUser)
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login users={users} />} />
+        <Route path="/" element={<Login users={users} setCurrentUser={setCurrentUser} />} />
         <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
-        <Route path="/messages" element={<Messages users={users} />} />
+        <Route path="/messages" element={<Messages users={users} setCurrentUser={setCurrentUser} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -69,10 +69,9 @@ function Register({ users, setUsers }) {
     function tryRegister(e) {
         let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
         let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
-        let flag3 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
-        let flag4 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "display name is not valid");
-        let flag5 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "confirm password does not match password")
-        if (flag1 && flag2 && flag3 && flag4 && flag5) {
+        let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "display name is not valid");
+        let flag4 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "confirm password does not match password")
+        if (flag1 && flag2 && flag3 && flag4) {
             // save user
             let user = {
                 username: username.val,
