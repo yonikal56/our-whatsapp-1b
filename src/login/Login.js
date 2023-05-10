@@ -3,7 +3,7 @@ import FormBottom from "../formBottom/FormBottom.js"
 import LoginForm from "../loginForm/LoginForm.js";
 import "./Login.css"
 
-function Login() {
+function Login({users}) {
     return (
         <>
             <Background />
