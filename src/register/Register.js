@@ -8,9 +8,15 @@ function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [profilePicture, setProfilePicture] = useState('photos/no_img.png');
+    
+    const regexes = {
+        password: new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})'),
+        username: new RegExp('^[a-zA-Z0-9]{6,}$'),
+        displayName: new RegExp('^[a-zA-Z0-9][a-zA-Z0-9 ]{4,}[a-zA-Z0-9]$')
+    };
 
-    function handleConfirmPasswordKeyUp(e) {
-        if (e.target.value !== password) {
+    function checkField(e, regex) {
+        if (!regex.test(e.target.value)) {
             if (e.target.classList) {
                 e.target.classList.add('error');
             }
@@ -40,6 +46,7 @@ function Register() {
                             type="text"
                             labelText="User Name:"
                             inputText="Enter your username"
+                            onKeyUp={(e) => checkField(e, regexes.username)}
                         />
                         <RegisterForm
                             type="password"
@@ -47,12 +54,13 @@ function Register() {
                             inputText="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            onKeyUp={handleConfirmPasswordKeyUp}
+                            onKeyUp={(e) => checkField(e, regexes.password)}
                         />
                         <RegisterForm
                             type="text"
                             labelText="Display Name:"
                             inputText="Enter your display name"
+                            onKeyUp={(e) => checkField(e, regexes.displayName)}
                         />
                         <RegisterForm
                             type="password"
@@ -60,7 +68,7 @@ function Register() {
                             inputText="Repeat your password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            onKeyUp={handleConfirmPasswordKeyUp}
+                            onKeyUp={(e) => checkField(e, new RegExp('^' + password + '$'))}
                         />
                         {confirmPassword !== password && (
                             <div className="col-md-12 error-message"></div>
