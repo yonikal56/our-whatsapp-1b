@@ -26,7 +26,7 @@ function Login({ users, setCurrentUser }) {
             } else {
                 setErrors(prevState => ({
                     ...prevState,
-                    ["password"]: "password is wrong!"
+                    "password": "password is wrong!"
                 }));
             }
         }

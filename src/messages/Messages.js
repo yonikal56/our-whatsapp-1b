@@ -4,7 +4,7 @@ import Conversations from "../conversations/Conversations.js";
 import NewChatModal from "../newChatModal/newChatModal.js";
 import { useNavigate } from "react-router-dom";
 
-function Messages({setCurrentUser}) {
+function Messages({currentUser, setCurrentUser}) {
     let navigate = useNavigate();
 
     function logout() {
