@@ -40,7 +40,7 @@ function Register({ users, setUsers, currentUser }) {
             if (userExist) {
                 setErrors(prevState => ({
                     ...prevState,
-                    [field]: "username already exists, try another"
+                    [field]: "Username already exists, try another"
                 }));
                 return false;
             }
@@ -74,10 +74,10 @@ function Register({ users, setUsers, currentUser }) {
     }
 
     function tryRegister(e, users, setUsers) {
-        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
-        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
-        let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "display name is not valid");
-        let flag4 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "confirm password does not match password")
+        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "Username is invalid");
+        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "Password is invalid");
+        let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "Display Name is invalid");
+        let flag4 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "Confirm Password does not match password")
         if (flag1 && flag2 && flag3 && flag4) {
             // save user
             let user = {
@@ -113,7 +113,7 @@ function Register({ users, setUsers, currentUser }) {
                             labelText="User Name:"
                             inputText="Enter your username"
                             onChange={(e) => username.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, regexes.username, "username", "username is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.username, "username", "Username is invalid")}
                             error={errors.username}
                         />
                         <FormItem
@@ -121,7 +121,7 @@ function Register({ users, setUsers, currentUser }) {
                             labelText="Password:"
                             inputText="Enter your password"
                             onChange={(e) => password.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.password, "password", "Password is invalid")}
                             error={errors.password}
                         />
                         <FormItem
@@ -130,7 +130,7 @@ function Register({ users, setUsers, currentUser }) {
                             inputText="Enter your display name"
                             onChange={(e) => displayName.val = e.target.value}
                             error={errors.displayName}
-                            onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "display name is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "Display Name is invalid")}
                         />
                         <FormItem
                             type="password"
@@ -138,7 +138,7 @@ function Register({ users, setUsers, currentUser }) {
                             inputText="Repeat your password"
                             error={errors.confirm}
                             onChange={(e) => confirmPassword.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, new RegExp('^' + password.val + '$'), "confirm", "confirm password does not match password")}
+                            onKeyUp={(e) => checkField(e, new RegExp('^' + password.val + '$'), "confirm", "Confirm Password does not match password")}
                         />
                         {confirmPassword !== password && (
                             <div className="col-md-12 error-message"></div>
