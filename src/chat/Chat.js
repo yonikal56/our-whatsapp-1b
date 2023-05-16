@@ -3,7 +3,7 @@ import ChatHeader from "../chatHeader/ChatHeader";
 import Message from "../message/Message";
 
 function Chat({currentUser}) {
-    const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? currentUser.currFriend.messages : [], [currentUser]);
+    const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? (currentUser.currFriend.messages) : [], [currentUser]);
 
     const messagesEndRef = useRef(null)
 
@@ -11,7 +11,7 @@ function Chat({currentUser}) {
         messagesEndRef.current?.scrollIntoView()
     }
 
-    useEffect(scrollToBottom, [messsagesData]);
+    useEffect(scrollToBottom);
 
     if(!currentUser.currFriend || !currentUser || !currentUser.friends || currentUser.friends.length === 0) {
         return <div></div>
@@ -21,7 +21,7 @@ function Chat({currentUser}) {
         <>
             <ChatHeader name={currentUser.currFriend.name} img={currentUser.currFriend.image} />
             <main className="messages" >
-                {messsagesData.length > 0 && messsagesData.map((message, index) => (
+                {currentUser.currFriend.messages.length > 0 && currentUser.currFriend.messages.map((message, index) => (
                 <Message
                     key={index}
                     text={message.text}

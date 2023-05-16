@@ -112,6 +112,7 @@ function Register({ users, setUsers, currentUser }) {
                             type="text"
                             labelText="User Name:"
                             inputText="Enter your username"
+                            tooltip="Username must be at least 6 chars, only letters and digits"
                             onChange={(e) => username.val = e.target.value}
                             onKeyUp={(e) => checkField(e, regexes.username, "username", "Username is invalid")}
                             error={errors.username}
@@ -120,6 +121,7 @@ function Register({ users, setUsers, currentUser }) {
                             type="password"
                             labelText="Password:"
                             inputText="Enter your password"
+                            tooltip="Password must be at least 8 chars and include uppercase and lowercase letters, digits and special character"
                             onChange={(e) => password.val = e.target.value}
                             onKeyUp={(e) => checkField(e, regexes.password, "password", "Password is invalid")}
                             error={errors.password}
@@ -128,6 +130,7 @@ function Register({ users, setUsers, currentUser }) {
                             type="text"
                             labelText="Display Name:"
                             inputText="Enter your display name"
+                            tooltip="Display Name must be at least 6 chars, only letters, digits and spaces"
                             onChange={(e) => displayName.val = e.target.value}
                             error={errors.displayName}
                             onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "Display Name is invalid")}
@@ -136,6 +139,7 @@ function Register({ users, setUsers, currentUser }) {
                             type="password"
                             labelText="Confirm Password:"
                             inputText="Repeat your password"
+                            tooltip="Confirm Password must be equal to password"
                             error={errors.confirm}
                             onChange={(e) => confirmPassword.val = e.target.value}
                             onKeyUp={(e) => checkField(e, new RegExp('^' + password.val + '$'), "confirm", "Confirm Password does not match password")}

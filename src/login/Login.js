@@ -101,10 +101,10 @@ function Login({users, setCurrentUser, currentUser}) {
             <Background />
             <form className="row g-3">
                 <FormItem type="text" labelText="User Name:" inputText="Enter your username" error={errors.username}
-                    onChange={(e) => username.val = e.target.value}
+                    onChange={(e) => username.val = e.target.value} tooltip="Username must be at least 6 chars, only letters and digits"
                     onKeyUp={(e) => checkField(e, regexes.username, "username", "Username is invalid")} />
                 <FormItem type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
-                    onChange={(e) => password.val = e.target.value}
+                    onChange={(e) => password.val = e.target.value} tooltip="Password must be at least 8 chars and include uppercase and lowercase letters, digits and special character"
                     onKeyUp={(e) => checkField(e, regexes.password, "password", "Password is invalid")} />
                 <FormBottom button="Login" subComment="Not registed?" sufComment="to register" link="/register" onSubmit={tryLogin} />
             </form>
