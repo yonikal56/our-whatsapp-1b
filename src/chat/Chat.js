@@ -3,7 +3,7 @@ import ChatHeader from "../chatHeader/ChatHeader";
 import Message from "../message/Message";
 
 function Chat({currentUser}) {
-    const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? (currentUser.currFriend.messages) : [], [currentUser]);
+    const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? currentUser.currFriend.messages : [], [currentUser]);
 
     const messagesEndRef = useRef(null)
 
@@ -21,7 +21,7 @@ function Chat({currentUser}) {
         <>
             <ChatHeader name={currentUser.currFriend.name} img={currentUser.currFriend.image} />
             <main className="messages" >
-                {currentUser.currFriend.messages.length > 0 && currentUser.currFriend.messages.map((message, index) => (
+                {messsagesData.length > 0 && messsagesData.map((message, index) => (
                 <Message
                     key={index}
                     text={message.text}

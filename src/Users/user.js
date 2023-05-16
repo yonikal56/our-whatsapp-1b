@@ -26,7 +26,6 @@ export function AddFriend(users, setUsers, currentUser, setCurrentUser, friendsN
     let flag = false;
 
     newCurrUser.friends.forEach((friend) => {
-        console.log(friend);
         if (friendsName === friend.name) {
             flag = true;
             return;

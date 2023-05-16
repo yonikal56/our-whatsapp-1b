@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Conversation from "../conversation/Conversation";
 import ConversationsHeader from '../conversationsHeader/ConversationsHeader';
 
@@ -11,6 +11,10 @@ function Conversations({currentUser, setCurrentUser}) {
             currFriend: currentUser.friends.find(friend => friend.name === conversation.name),
         });
     };
+
+    useEffect(() => {
+        handleConversationClick(currentUser.currFriend);
+    }, []);
 
     return (
         <div id="conversations-section">
