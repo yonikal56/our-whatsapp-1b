@@ -1,18 +1,18 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from "../background/Background.js"
-import FormItem from "../formItem/FormItem.js";
-import {setCurr, isNotConnected} from '../Users/user.js';
+import FormBottom from "../formBottom/FormBottom.js"
+import RegisterForm from "../registerForm/RegisterForm.js";
+import {setCurr} from '../Users/user.js';
 import "./Login.css"
-import FormBottom from '../formBottom/FormBottom.js';
 
-function Login({users, setCurrentUser, currentUser}) {
+function Login({users, setCurrentUser}) {
     const password = useRef();
     const username = useRef();
     
     function tryLogin(e) {
-        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "Username is invalid");
-        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "Password is invalid");
+        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
+        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
         if (flag1 && flag2) {
             let isValid = false;
             for (const [, user] of Object.entries(users)) {
@@ -28,7 +28,7 @@ function Login({users, setCurrentUser, currentUser}) {
             } else {
                 setErrors(prevState => ({
                     ...prevState,
-                    "password": "Password is wrong"
+                    "password": "password is wrong!"
                 }));
             }
         }
@@ -42,12 +42,6 @@ function Login({users, setCurrentUser, currentUser}) {
 
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
-
-    useEffect(() => {
-        if (!isNotConnected(currentUser)) {
-            navigate('/messages');
-        }
-    }, [currentUser, navigate]);
 
     function validateValue(regex, value, field, error) {
         let flag = regex.test(value);
@@ -76,7 +70,7 @@ function Login({users, setCurrentUser, currentUser}) {
             if (!exists) {
                 setErrors(prevState => ({
                     ...prevState,
-                    [field]: "Username does not exists"
+                    [field]: "username does not exists"
                 }));
                 return false;
             }
@@ -100,12 +94,12 @@ function Login({users, setCurrentUser, currentUser}) {
         <>
             <Background />
             <form className="row g-3">
-                <FormItem type="text" labelText="User Name:" inputText="Enter your username" error={errors.username}
-                    onChange={(e) => username.val = e.target.value} tooltip="Username must be at least 6 chars, only letters and digits"
-                    onKeyUp={(e) => checkField(e, regexes.username, "username", "Username is invalid")} />
-                <FormItem type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
-                    onChange={(e) => password.val = e.target.value} tooltip="Password must be at least 8 chars and include uppercase and lowercase letters, digits and special character"
-                    onKeyUp={(e) => checkField(e, regexes.password, "password", "Password is invalid")} />
+                <RegisterForm type="text" labelText="User Name:" inputText="Enter your username" error={errors.username}
+                    onChange={(e) => username.val = e.target.value}
+                    onKeyUp={(e) => checkField(e, regexes.username, "username", "username is not valid")} />
+                <RegisterForm type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
+                    onChange={(e) => password.val = e.target.value}
+                    onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")} />
                 <FormBottom button="Login" subComment="Not registed?" sufComment="to register" link="/register" onSubmit={tryLogin} />
             </form>
         </>

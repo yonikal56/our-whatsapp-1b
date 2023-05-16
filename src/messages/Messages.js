@@ -3,21 +3,23 @@ import Background from "../background/Background.js"
 import ChatSection from "../chatSection/ChatSection.js";
 import Conversations from "../conversations/Conversations.js";
 import NewChatModal from "../newChatModal/newChatModal.js";
-import {setCurr, isNotConnected} from '../Users/user.js';
-import "./Messages.css"
 import { useNavigate } from "react-router-dom";
+
+function isNotRegistered(currentUser) {
+    return Object.keys(currentUser).length === 0;
+}
 
 function Messages({users, setUsers, currentUser, setCurrentUser}) {
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (isNotConnected(currentUser)) {
+        if (isNotRegistered(currentUser)) {
             navigate('/login');
         }
     }, [currentUser, navigate]);
 
     function logout() {
-        setCurr('', setCurrentUser);
+        setCurrentUser('');
         navigate('/login');
     }
 

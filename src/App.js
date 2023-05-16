@@ -21,7 +21,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Login users={users} setUsers={setUsers} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       <Route path="/login" element={<Login users={users} setUsers={setUsers} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-      <Route path="/register" element={<Register users={users} setUsers={setUsers} currentUser={currentUser} />} />
+      <Route path="/register" element={<Register users={users} setUsers={setUsers} />} />
       <Route path="/messages" element={<Messages users={users} setUsers={setUsers} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       <Route path="*" element={<NotFound />} />
       </Routes>

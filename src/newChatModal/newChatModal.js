@@ -3,9 +3,8 @@ import { AddFriend } from "../Users/user";
 function NewChatModal({users, setUsers, currentUser, setCurrentUser }) {
 
     const addFriend = () => {
+        debugger;
         AddFriend(users, setUsers, currentUser, setCurrentUser, document.getElementById('friend_name').value);
-        document.getElementsByClassName("btn-close")[0].click();
-        document.getElementById('friend_name').value = "";
     }
 
     return (
