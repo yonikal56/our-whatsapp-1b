@@ -1,15 +1,35 @@
+import React, { useEffect, useRef, useMemo } from 'react';
 import ChatHeader from "../chatHeader/ChatHeader";
 import Message from "../message/Message";
 
-function Chat() {
+function Chat({currentUser}) {
+    const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? currentUser.currFriend.messages : [], [currentUser]);
+
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView()
+    }
+
+    useEffect(scrollToBottom, [messsagesData]);
+
+    if(!currentUser.currFriend || !currentUser || !currentUser.friends || currentUser.friends.length === 0) {
+        return <div></div>
+    }
+
     return (
         <>
-            <ChatHeader name="Eliyahu" img="photos/Eliyahu.png" />
-            <main className="messages">
-                <div className="real-messages">
-                    <Message text="I need to tell you both something" time="10:30" side="left" />
-                    <Message text="Don't tell to Yuval" time="10:31" side="right" />
-                </div>
+            <ChatHeader name={currentUser.currFriend.name} img={currentUser.currFriend.image} />
+            <main className="messages" >
+                {messsagesData.length > 0 && messsagesData.map((message, index) => (
+                <Message
+                    key={index}
+                    text={message.text}
+                    time={message.time}
+                    side={message.sender === currentUser.username ? 'left' : 'right'}
+                />
+                ))}
+                <div ref={messagesEndRef} />
             </main>
         </>
     );
