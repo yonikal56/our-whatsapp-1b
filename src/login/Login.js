@@ -100,7 +100,7 @@ function Login({users, setCurrentUser}) {
                 <RegisterForm type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
                     onChange={(e) => password.val = e.target.value}
                     onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")} />
-                <FormBottom button="Login" subComment="Not registed?" sufComment="to register" link="/register" onSubmit={tryLogin} />
+                <FormBottom button="Login" subComment="Not registed?" sufComment=" to register" link="/register" onSubmit={tryLogin} />
             </form>
         </>
     );

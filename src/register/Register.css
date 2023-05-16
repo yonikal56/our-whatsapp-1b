@@ -1,17 +1,13 @@
-.btn {
-    bottom: 10%;
+.link-color {
+    color: #111b21;
+    font-weight: bold;
 }
 
-.register {
-    color: rgb(115, 150, 54);
-    right: 40%;
-    bottom: 5%;
+.link-color:hover {
+    color:#aebac1 !important;
 }
-
-#click-here {
-    color: rgb(0, 195, 255);
-    text-decoration: underline;
-}
+  
+  
 
 #selectedImage {
     height: auto;

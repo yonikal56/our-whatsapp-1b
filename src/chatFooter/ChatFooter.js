@@ -36,7 +36,7 @@ function ChatFooter({ users, setUsers, currentUser, setCurrentUser }) {
 
   return (
     <footer className="footer">
-      <div className="input-group ">
+      <div id="send-group" className="input-group ">
         <input
           type="text"
           className="form-control"

@@ -14,7 +14,11 @@ function Chat({currentUser}) {
     useEffect(scrollToBottom, [messsagesData]);
 
     if(!currentUser.currFriend || !currentUser || !currentUser.friends || currentUser.friends.length === 0) {
-        return <div></div>
+        return (
+        <>
+            <ChatHeader name={""} img={null} />
+        </>
+        );
     }
 
     return (

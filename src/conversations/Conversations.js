@@ -3,6 +3,7 @@ import Conversation from "../conversation/Conversation";
 import ConversationsHeader from '../conversationsHeader/ConversationsHeader';
 
 function Conversations({currentUser, setCurrentUser}) {
+    debugger;
     const conversationsData = currentUser && currentUser.friends ? currentUser.friends : [];
 
     const handleConversationClick = (conversation) => {
@@ -23,7 +24,7 @@ function Conversations({currentUser, setCurrentUser}) {
                             time={conversation.messages && conversation.messages.length > 0 ? conversation.messages[conversation.messages.length - 1].time : ""}
                             message={conversation.messages && conversation.messages.length > 0 ? conversation.messages[conversation.messages.length - 1].text : ""}
                             img={conversation.image}
-                            current={currentUser.currentConversation === conversation.name}
+                            current={currentUser.currFriend.name === conversation.name}
                         />
                     </div>
                 ))}
