@@ -6,6 +6,7 @@ form {
     background-color: #fff;
     border: 1px solid #000;
     padding: 20px;
+    min-width: 60vw;;
     max-width: 600px;
     border-radius: 10px;
 }

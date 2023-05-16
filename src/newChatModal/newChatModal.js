@@ -1,4 +1,12 @@
-function NewChatModal() {
+import { AddFriend } from "../Users/user";
+
+function NewChatModal({users, setUsers, currentUser, setCurrentUser }) {
+
+    const addFriend = () => {
+        debugger;
+        AddFriend(users, setUsers, currentUser, setCurrentUser, document.getElementById('friend_name').value);
+    }
+
     return (
         <>
             <div className="modal fade" id="newModal" tabIndex="-1" aria-hidden="true">
@@ -10,12 +18,12 @@ function NewChatModal() {
                         </div>
                         <div className="modal-body">
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="Contact's Identifier"
+                                <input id="friend_name" type="text" className="form-control" placeholder="Contact's Identifier"
                                     aria-label="Contact's Identifier"/>
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Add</button>
+                            <button type="button" className="btn btn-primary" onClick={addFriend}>Add</button>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ body {
     width: 100%;
     top: 0;
     height: 15%;
+    pointer-events: none;
 }
 
 #downBorder {
@@ -17,11 +18,13 @@ body {
     width: 100%;
     top: 15%;
     height: 85%;
+    pointer-events: none;
 }
 
 .main-body-back-ground {
-    background-color: #bbf2ff;
+    background-color: rgba(187, 242, 255, 0.5);
 }
+
 
 .top-body-back-ground {
     background-color: #0dcaf0;

@@ -3,25 +3,27 @@ import { useNavigate } from "react-router-dom";
 import Background from "../background/Background.js"
 import FormBottom from "../formBottom/FormBottom.js"
 import RegisterForm from "../registerForm/RegisterForm.js";
+import {setCurr} from '../Users/user.js';
 import "./Login.css"
 
-function Login({ users, setCurrentUser }) {
-    const password = useRef(0);
-    const username = useRef(0);
-
+function Login({users, setCurrentUser}) {
+    const password = useRef();
+    const username = useRef();
+    
     function tryLogin(e) {
         let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
         let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
         if (flag1 && flag2) {
-            let f = false;
-            users.forEach((user, index) => {
+            let isValid = false;
+            for (const [, user] of Object.entries(users)) {
                 if (username.val === user.username && password.val === user.password) {
-                    f = true;
+                    isValid = true;
                 }
-            });
+            };
             // login
-            if (f) {
-                setCurrentUser(username.val);
+            if (isValid) {
+                const user = users[username.val];
+                setCurr(user, setCurrentUser);
                 navigate('/messages');
             } else {
                 setErrors(prevState => ({
@@ -57,14 +59,15 @@ function Login({ users, setCurrentUser }) {
         }
 
         if (field === "username") {
-            let f = false;
-            users.forEach((user, index) => {
+            let exists = false;
+            for (const [, user] of Object.entries(users)) {
                 if (value === user.username) {
-                    f = true;
+                    exists = true;
                 }
-            });
+            };
+            
 
-            if (!f) {
+            if (!exists) {
                 setErrors(prevState => ({
                     ...prevState,
                     [field]: "username does not exists"

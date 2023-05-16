@@ -1,14 +1,32 @@
+import React from 'react';
 import Conversation from "../conversation/Conversation";
-import ConversationsHeader from "../conversationsHeader/ConversationsHeader";
+import ConversationsHeader from '../conversationsHeader/ConversationsHeader';
 
-function Conversations() {
+function Conversations({currentUser, setCurrentUser}) {
+    const conversationsData = currentUser && currentUser.friends ? currentUser.friends : [];
+
+    const handleConversationClick = (conversation) => {
+        setCurrentUser({
+            ...currentUser,
+            currFriend: currentUser.friends.find(friend => friend.name === conversation.name),
+        });
+    };
+
     return (
-        <div className="col-lg-3 col-md-4 col-12" id="conversations-section">
-            <ConversationsHeader />
+        <div id="conversations-section">
+            <ConversationsHeader currentUser={currentUser}/>
             <main className="conversations">
-                <Conversation name="Yonatan" time="27/04/23 10:31" message="it went awfull - 99" img="photos/Yontan.png" />
-                <Conversation name="Eliyahu" time="26/04/23 23:14" message="don't tell to Yuval" img="photos/Eliyahu.png" current="True" />
-                <Conversation name="Yuval" time="26/04/23 22:50" message="love you mate" img="photos/Yuval.png" />
+                {conversationsData.length > 0 && conversationsData.map((conversation, index) => (
+                    <div key={index} onClick={() => handleConversationClick(conversation)}>
+                        <Conversation
+                            name={conversation.name ? conversation.name : ""}
+                            time={conversation.messages && conversation.messages.length > 0 ? conversation.messages[conversation.messages.length - 1].time : ""}
+                            message={conversation.messages && conversation.messages.length > 0 ? conversation.messages[conversation.messages.length - 1].text : ""}
+                            img={conversation.image}
+                            current={currentUser.currentConversation === conversation.name}
+                        />
+                    </div>
+                ))}
             </main>
         </div>
     );

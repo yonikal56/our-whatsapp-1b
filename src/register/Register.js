@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Background from '../background/Background.js';
 import FormBottom from '../formBottom/FormBottom.js';
 import RegisterForm from '../registerForm/RegisterForm';
+import {AddUser} from '../Users/user.js';
 import "./Register.css"
 
 function Register({ users, setUsers }) {
-    const password = useRef(0);
-    const confirmPassword = useRef(0);
-    const displayName = useRef(0);
-    const username = useRef(0);
+    const password = useRef();
+    const confirmPassword = useRef();
+    const displayName = useRef();
+    const username = useRef();
     const [profilePicture, setProfilePicture] = useState('photos/no_img.png');
 
     const regexes = {
@@ -23,14 +24,14 @@ function Register({ users, setUsers }) {
 
     function validateValue(regex, value, field, error) {
         if (field === "username") {
-            let f = false;
-            users.forEach((user, index) => {
+            let userExist = false;
+            for (const [, user] of Object.entries(users)) {
                 if (value === user.username) {
-                    f = true;
+                    userExist = true;
                 }
-            });
+            };
 
-            if (f) {
+            if (userExist) {
                 setErrors(prevState => ({
                     ...prevState,
                     [field]: "username already exists, try another"
@@ -66,7 +67,7 @@ function Register({ users, setUsers }) {
         }
     }
 
-    function tryRegister(e) {
+    function tryRegister(e, users, setUsers) {
         let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
         let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
         let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "display name is not valid");
@@ -77,10 +78,11 @@ function Register({ users, setUsers }) {
                 username: username.val,
                 password: password.val,
                 displayName: displayName.val,
-                photo: profilePicture
+                photo: profilePicture,
+                friends: [],
             };
-            setUsers(oldArray => [...oldArray, user]);
-            navigate('/');
+            AddUser(users, setUsers, user.username, user.password, user.displayName, user.photo);
+            navigate('/login');
         }
         e.preventDefault();
     }
@@ -155,8 +157,8 @@ function Register({ users, setUsers }) {
                             button="Register"
                             subComment="Already registered?"
                             sufComment="to login"
-                            onSubmit={tryRegister}
-                            link="/"
+                            onSubmit={(e) => {tryRegister(e, users, setUsers)}}
+                            link="/login"
                         />
                     </div>
                 </form>
