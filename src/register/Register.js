@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from '../background/Background.js';
 import FormBottom from '../formBottom/FormBottom.js';
-import RegisterForm from '../registerForm/RegisterForm';
-import {AddUser} from '../Users/user.js';
+import FormItem from '../formItem/FormItem.js';
+import {AddUser, isNotConnected} from '../Users/user.js';
 import "./Register.css"
 
-function Register({ users, setUsers }) {
+function Register({ users, setUsers, currentUser }) {
     const password = useRef();
     const confirmPassword = useRef();
     const displayName = useRef();
@@ -22,6 +22,12 @@ function Register({ users, setUsers }) {
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
 
+    useEffect(() => {
+        if (!isNotConnected(currentUser)) {
+            navigate('/messages');
+        }
+    }, [currentUser, navigate]);
+
     function validateValue(regex, value, field, error) {
         if (field === "username") {
             let userExist = false;
@@ -34,7 +40,7 @@ function Register({ users, setUsers }) {
             if (userExist) {
                 setErrors(prevState => ({
                     ...prevState,
-                    [field]: "username already exists, try another"
+                    [field]: "Username already exists, try another"
                 }));
                 return false;
             }
@@ -68,10 +74,10 @@ function Register({ users, setUsers }) {
     }
 
     function tryRegister(e, users, setUsers) {
-        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "username is not valid");
-        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "password is not valid");
-        let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "display name is not valid");
-        let flag4 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "confirm password does not match password")
+        let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "Username is invalid");
+        let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "Password is invalid");
+        let flag3 = validateValue(regexes.displayName, displayName.val ? displayName.val : "", "displayName", "Display Name is invalid");
+        let flag4 = validateValue(new RegExp('^' + password.val + '$'), confirmPassword.val ? confirmPassword.val : "", "confirm", "Confirm Password does not match password")
         if (flag1 && flag2 && flag3 && flag4) {
             // save user
             let user = {
@@ -102,37 +108,41 @@ function Register({ users, setUsers }) {
             <div className="col-lg-8 col-sm-10">
                 <form className="form-register">
                     <div className="row">
-                        <RegisterForm
+                        <FormItem
                             type="text"
                             labelText="User Name:"
                             inputText="Enter your username"
+                            tooltip="Username must be at least 6 chars, only letters and digits"
                             onChange={(e) => username.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, regexes.username, "username", "username is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.username, "username", "Username is invalid")}
                             error={errors.username}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="password"
                             labelText="Password:"
                             inputText="Enter your password"
+                            tooltip="Password must be at least 8 chars and include uppercase and lowercase letters, digits and special character"
                             onChange={(e) => password.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.password, "password", "Password is invalid")}
                             error={errors.password}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="text"
                             labelText="Display Name:"
                             inputText="Enter your display name"
+                            tooltip="Display Name must be at least 6 chars, only letters, digits and spaces"
                             onChange={(e) => displayName.val = e.target.value}
                             error={errors.displayName}
-                            onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "display name is not valid")}
+                            onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "Display Name is invalid")}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="password"
                             labelText="Confirm Password:"
                             inputText="Repeat your password"
+                            tooltip="Confirm Password must be equal to password"
                             error={errors.confirm}
                             onChange={(e) => confirmPassword.val = e.target.value}
-                            onKeyUp={(e) => checkField(e, new RegExp('^' + password.val + '$'), "confirm", "confirm password does not match password")}
+                            onKeyUp={(e) => checkField(e, new RegExp('^' + password.val + '$'), "confirm", "Confirm Password does not match password")}
                         />
                         {confirmPassword !== password && (
                             <div className="col-md-12 error-message"></div>
