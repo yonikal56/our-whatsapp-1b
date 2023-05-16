@@ -11,7 +11,7 @@ function Chat({currentUser}) {
         messagesEndRef.current?.scrollIntoView()
     }
 
-    useEffect(scrollToBottom, [messsagesData]);
+    useEffect(scrollToBottom);
 
     if(!currentUser.currFriend || !currentUser || !currentUser.friends || currentUser.friends.length === 0) {
         return <div></div>
