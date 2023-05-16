@@ -72,4 +72,6 @@ export function AddMessage(users, setUsers, currentUser, setCurrentUser,  friend
     localStorage.setItem('users', JSON.stringify(updatedUsers));
 };
 
-
+export function isNotConnected(currentUser) {
+    return Object.keys(currentUser).length === 0;
+}

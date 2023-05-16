@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from '../background/Background.js';
 import FormBottom from '../formBottom/FormBottom.js';
-import RegisterForm from '../registerForm/RegisterForm';
-import {AddUser} from '../Users/user.js';
+import FormItem from '../formItem/FormItem.js';
+import {AddUser, isNotConnected} from '../Users/user.js';
 import "./Register.css"
 
-function Register({ users, setUsers }) {
+function Register({ users, setUsers, currentUser }) {
     const password = useRef();
     const confirmPassword = useRef();
     const displayName = useRef();
@@ -21,6 +21,12 @@ function Register({ users, setUsers }) {
 
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isNotConnected(currentUser)) {
+            navigate('/messages');
+        }
+    }, [currentUser, navigate]);
 
     function validateValue(regex, value, field, error) {
         if (field === "username") {
@@ -102,7 +108,7 @@ function Register({ users, setUsers }) {
             <div className="col-lg-8 col-sm-10">
                 <form className="form-register">
                     <div className="row">
-                        <RegisterForm
+                        <FormItem
                             type="text"
                             labelText="User Name:"
                             inputText="Enter your username"
@@ -110,7 +116,7 @@ function Register({ users, setUsers }) {
                             onKeyUp={(e) => checkField(e, regexes.username, "username", "username is not valid")}
                             error={errors.username}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="password"
                             labelText="Password:"
                             inputText="Enter your password"
@@ -118,7 +124,7 @@ function Register({ users, setUsers }) {
                             onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")}
                             error={errors.password}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="text"
                             labelText="Display Name:"
                             inputText="Enter your display name"
@@ -126,7 +132,7 @@ function Register({ users, setUsers }) {
                             error={errors.displayName}
                             onKeyUp={(e) => checkField(e, regexes.displayName, "displayName", "display name is not valid")}
                         />
-                        <RegisterForm
+                        <FormItem
                             type="password"
                             labelText="Confirm Password:"
                             inputText="Repeat your password"

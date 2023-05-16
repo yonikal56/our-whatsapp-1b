@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from "../background/Background.js"
-import FormBottom from "../formBottom/FormBottom.js"
-import RegisterForm from "../registerForm/RegisterForm.js";
-import {setCurr} from '../Users/user.js';
+import FormItem from "../formItem/FormItem.js";
+import {setCurr, isNotConnected} from '../Users/user.js';
 import "./Login.css"
+import FormBottom from '../formBottom/FormBottom.js';
 
-function Login({users, setCurrentUser}) {
+function Login({users, setCurrentUser, currentUser}) {
     const password = useRef();
     const username = useRef();
     
@@ -42,6 +42,12 @@ function Login({users, setCurrentUser}) {
 
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isNotConnected(currentUser)) {
+            navigate('/messages');
+        }
+    }, [currentUser, navigate]);
 
     function validateValue(regex, value, field, error) {
         let flag = regex.test(value);
@@ -94,10 +100,10 @@ function Login({users, setCurrentUser}) {
         <>
             <Background />
             <form className="row g-3">
-                <RegisterForm type="text" labelText="User Name:" inputText="Enter your username" error={errors.username}
+                <FormItem type="text" labelText="User Name:" inputText="Enter your username" error={errors.username}
                     onChange={(e) => username.val = e.target.value}
                     onKeyUp={(e) => checkField(e, regexes.username, "username", "username is not valid")} />
-                <RegisterForm type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
+                <FormItem type="password" labelText="Password:" inputText="Enter your password" error={errors.password}
                     onChange={(e) => password.val = e.target.value}
                     onKeyUp={(e) => checkField(e, regexes.password, "password", "password is not valid")} />
                 <FormBottom button="Login" subComment="Not registed?" sufComment="to register" link="/register" onSubmit={tryLogin} />
