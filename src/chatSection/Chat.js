@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useMemo } from 'react';
-import ChatHeader from "../chatHeader/ChatHeader";
-import Message from "../message/Message";
+import ChatHeader from "./ChatHeader";
+import Message from "./Message";
 
 function Chat({currentUser}) {
     const messsagesData = useMemo(() => currentUser && currentUser.currFriend && currentUser.currFriend.messages ? currentUser.currFriend.messages : [], [currentUser]);

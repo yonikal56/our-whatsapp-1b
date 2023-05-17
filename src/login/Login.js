@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from "../background/Background.js"
-import FormItem from "../formItem/FormItem.js";
+import FormItem from "../form/FormItem.js";
 import {setCurr, isNotConnected} from '../Users/user.js';
 import "./Login.css"
-import FormBottom from '../formBottom/FormBottom.js';
+import FormBottom from '../form/FormBottom.js';
 
 function Login({users, setCurrentUser, currentUser}) {
     const password = useRef();
