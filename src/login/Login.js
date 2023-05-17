@@ -9,7 +9,7 @@ import FormBottom from '../formBottom/FormBottom.js';
 function Login({users, setCurrentUser, currentUser}) {
     const password = useRef();
     const username = useRef();
-    
+
     function tryLogin(e) {
         let flag1 = validateValue(regexes.username, username.val ? username.val : "", "username", "Username is invalid");
         let flag2 = validateValue(regexes.password, password.val ? password.val : "", "password", "Password is invalid");
@@ -71,7 +71,7 @@ function Login({users, setCurrentUser, currentUser}) {
                     exists = true;
                 }
             };
-            
+
 
             if (!exists) {
                 setErrors(prevState => ({

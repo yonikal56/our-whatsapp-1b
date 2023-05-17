@@ -166,7 +166,7 @@ function Register({ users, setUsers, currentUser }) {
                         <FormBottom
                             button="Register"
                             subComment="Already registered?"
-                            sufComment="to login"
+                            sufComment=" to login"
                             onSubmit={(e) => {tryRegister(e, users, setUsers)}}
                             link="/login"
                         />

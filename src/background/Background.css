@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #54656f;
 }
 
 #upBorder {
@@ -11,24 +12,9 @@ body {
     top: 0;
     height: 15%;
     pointer-events: none;
+    background-color: #111b21;
 }
 
-#downBorder {
-    position: fixed;
-    width: 100%;
-    top: 15%;
-    height: 85%;
-    pointer-events: none;
-}
-
-.main-body-back-ground {
-    background-color: rgba(187, 242, 255, 0.5);
-}
-
-
-.top-body-back-ground {
-    background-color: #0dcaf0;
-}
 
 .field {
     font-weight: bold;
