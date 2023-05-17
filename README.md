@@ -1,55 +1,52 @@
-# Our Whatsapp
+# OurWhatsApp
 
-This project is a simple and user-friendly web-based messaging application that allows users to communicate with each other in real-time.
-It features a clean and modern interface, with support for user registration, authentication, and profile management.
+OurWhatsApp is an intuitive web-based messaging application that facilitates real-time communication between users. The application showcases a sleek, modern interface equipped with user registration, authentication, and profile management capabilities.
 
 ## Getting Started
 
-To set up the project on your local machine, follow these steps:
+Follow these instructions to set up the project on your local machine:
 
-1. Clone the repository to your computer.
-2. Ensure you have a web browser installed to run the HTML and the CSS files.
-3. Write this following lined in your cmd:
+1. Ensure a web browser is installed to run HTML and CSS files.
+2. Enter the following commands in your terminal:
 <pre>
 git clone https://github.com/yonikal56/our-whatsapp-1b
 cd our-whatsapp-1b
 npm install
 npm start
 </pre>
-5. Register a new account or log in with an existing one.
 
-Please note that this project is a front-end prototype only.
-All the data is saves in local storage and you can't really communicate **yet** with other users.
+3. Register a new account or log in with an existing one.
+
+Please note that this project currently only serves as a front-end prototype. All data is stored in local storage, and there isn't functionality to communicate with other users yet.
 
 ## Features
 
-- User registration and login, with validation based on the registerd users list
-- Denaying access to the messages page if there is no registerd user
-- Data of the users + friends + messages is saved in the local storage, so even after a refresh - the data stays valid
-- Responsive design
-- Add friends, send them messages and display the messages in their chat
-- Move between chats
-- Displaying time and last messages + user photo and friends photo.
+- User registration and login, complete with validation against a list of registered users.
+- Denial of access to the messages page without a registered user.
+- User, friends, and messages data are stored in local storage, ensuring data persistence even after a refresh.
+- Responsive design.
+- Add friends, send messages, and display conversations in their chat.
+- Navigate between chats.
+- Display time, last messages and friends photos of each conversation.
 
+## Directory & File Overview
 
-## Dirs & Files 
+### Review
 
-### review
+The project primarily consists of JavaScript code (React), and this section reviews the main components:
 
-The project is mostly a js code (React) and in this section we will review the main components:
+- `App.js`: Initializes the user data with the local storage and handles the routing of the main pages.
+- `login`: Manages the login page. Simple yet integrated with local storage.
+- `register`: Manages the registration page. All fields undergo validation based on a predefined set of rules.
+- `special pages`: Handles attempts to access the app from invalid URLs.
+- `messages`: Manages the messages page.
+- `conversations`: Handles the conversations component on the messages page.
+- `chatSection`: Manages the chatSection component on the messages page.
+- `background`: Establishes general guidelines for the backgrounds of different pages.
+- `Users`: Stores utility functions to manage the data.
+- `photos`: Stores the photos used in the project.
 
-- `App.js`: Initiate the users data with the local storage and handles the routing of the main pages
-- `login`: Handles the login page. A very simple page but integrative with the local storage.
-- `register`: Handles the register page. All the fileds are getting validation by a set of rules we decided.
-- `special pages`: Manages attempts to access the app from url's that is not possible.
-- `messages`: Handles the message page.
-- `conversations`: Handles the conversations components in the messages page.
-- `chatSection`: Handles the chatSection components in the message page.
-- `background`: Manage general guidelines of the different pages background.
-- `Users`: stores a util functions to manage the data.
-- `photos`: We save here the used photos for the project.
-
-### hirarchy
+### Hierarchy
 
 - public
   - css
@@ -72,4 +69,4 @@ The project is mostly a js code (React) and in this section we will review the m
 
 - Implement a back-end server for user authentication, registration, and messaging.
 - Add support for group chats and private messaging.
-- Add support for multimedia messages, such as images and videos.
+- Include support for multimedia messages, such as images and videos.
