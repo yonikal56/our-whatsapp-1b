@@ -33,7 +33,7 @@ Please note that this project currently only serves as a front-end prototype. Al
 
 ### Review
 
-The project primarily consists of JavaScript code (React), and this section reviews the main components:
+The project is primarily built with JavaScript (React) and includes various elements ranging from components to data management utilities and assets. This section provides an overview of these key elements:
 
 - `App.js`: Initializes the user data with the local storage and handles the routing of the main pages.
 - `login`: Manages the login page. Simple yet integrated with local storage.
