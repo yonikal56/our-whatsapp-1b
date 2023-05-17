@@ -3,7 +3,6 @@ import Conversation from "../conversation/Conversation";
 import ConversationsHeader from '../conversationsHeader/ConversationsHeader';
 
 function Conversations({currentUser, setCurrentUser}) {
-    debugger;
     const conversationsData = currentUser && currentUser.friends ? currentUser.friends : [];
 
     const handleConversationClick = (conversation) => {
