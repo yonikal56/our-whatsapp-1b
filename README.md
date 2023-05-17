@@ -1,47 +1,72 @@
-# Our Whatsapp
+# OurWhatsApp
 
-This project is a simple and user-friendly web-based messaging application that allows users to communicate with each other in real-time.
-It features a clean and modern interface, with support for user registration, authentication, and profile management.
-
-## Features
-
-- User registration and login
-- messaging with the text and time of the last message sent
-- Profile picture support
-- Responsive design using Bootstrap
-- Chat screen with logout button
+OurWhatsApp is an intuitive web-based messaging application that facilitates real-time communication between users. The application showcases a sleek, modern interface equipped with user registration, authentication, and profile management capabilities.
 
 ## Getting Started
 
-To set up the project on your local machine, follow these steps:
+Follow these instructions to set up the project on your local machine:
 
-1. Clone the repository to your computer.
-2. Ensure you have a web browser installed to run the HTML and the CSS files.
-3. Open the `index.html` file in your web browser to access the login screen.
-4. Register a new account or log in with an existing one.
+1. Ensure a web browser is installed to run HTML and CSS files.
+2. Enter the following commands in your terminal:
+<pre>
+git clone https://github.com/yonikal56/our-whatsapp-1b
+cd our-whatsapp-1b
+npm install
+npm start
+</pre>
 
-Please note that this project is a front-end prototype only. it will be fully functional in the close future.
+3. Register a new account or log in with an existing one.
 
-## File Structure
+Please note that this project currently only serves as a front-end prototype. All data is stored in local storage, and there isn't functionality to communicate with other users yet.
 
-The project contains three main HTML files that serve as templates for the user interface:
+## Features
 
-- `index.html`: The login screen where users enter their credentials to access the application.
-- `register.html`: The registration screen where new users can create an account.
-- `messages.html`: The main messaging screen, which includes a user list, chat area and logout button.
+- User registration and login, complete with validation against a list of registered users.
+- Denial of access to the messages page without a registered user.
+- User, friends, and messages data are stored in local storage, ensuring data persistence even after a refresh.
+- Responsive design.
+- Add friends, send messages, and display conversations in their chat.
+- Navigate between chats.
+- Display time, last messages and friends photos of each conversation.
 
-The project also includes CSS files to style the interface:
+## Directory & File Overview
 
-- `src/css/bootstrap.min.css`: A minified version of the Bootstrap CSS framework.
-- `src/css/main.css`: General styles applied to the entire application.
-- `src/css/login.css`: Styles specific to the login screen.
-- `src/css/register.css`: Styles specific to the registration screen.
-- `src/css/messages.css`: Styles specific to the main messaging screen.
+### Review
+
+The project is primarily built with JavaScript (React) and includes various elements ranging from components to data management utilities and assets. This section provides an overview of these key elements:
+
+- `App.js`: Initializes the user data with the local storage and handles the routing of the main pages.
+- `login`: Manages the login page. Simple yet integrated with local storage.
+- `register`: Manages the registration page. All fields undergo validation based on a predefined set of rules.
+- `special pages`: Handles attempts to access the app from invalid URLs.
+- `messages`: Manages the messages page.
+- `conversations`: Handles the conversations component on the messages page.
+- `chatSection`: Manages the chatSection component on the messages page.
+- `background`: Establishes general guidelines for the backgrounds of different pages.
+- `Users`: Stores utility functions to manage the data.
+- `photos`: Stores the photos used in the project.
+
+### Hierarchy
+
+- public
+  - css
+    - bootstrap.min.css
+  - photos
+ 
+- src
+  - Users
+  - background
+  - chatSection
+  - conversations
+  - form
+  - login
+  - messages
+  - register
+  - special pages
+  - App.js
 
 ## Future Enhancements
 
 - Implement a back-end server for user authentication, registration, and messaging.
 - Add support for group chats and private messaging.
-- Implement message encryption for increased security.
-- Add support for multimedia messages, such as images and videos.
-- Move the project to React and make it fully functional.
+- Include support for multimedia messages, such as images and videos.
