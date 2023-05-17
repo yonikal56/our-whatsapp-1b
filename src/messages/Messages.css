@@ -12,16 +12,16 @@
     font-size: 1vw + 1vh;
     bottom: -2vh;
     margin: auto;
-  }
+}
 
- /* messages realated */
+/* messages realated */
 
- .right-header {
+.right-header {
     padding: 10px;
     font-size: 20px;
     background-color: #54656f;
     display: flex;
-    align-items: center; 
+    align-items: center;
     height: 60px;
     z-index: 1;
     border: 1px solid #aebac1;
@@ -31,7 +31,8 @@
 .right-header .media-body {
     margin-left: 10px;
     z-index: 2;
-    color: #d1d7db;;
+    color: #d1d7db;
+    ;
 }
 
 .right-header .avatar {
@@ -94,7 +95,7 @@
     border-right-color: #54656f;
     border-left: 0;
     left: -6px;
-    top: 60%; 
+    top: 60%;
     transform: translateY(-50%);
 }
 
@@ -120,7 +121,7 @@
     align-items: flex-start;
 }
 
- /* conversations related */
+/* conversations related */
 
 #conversations-section {
     display: flex;
@@ -144,9 +145,9 @@
     color: #d1d7db;
     margin-bottom: auto;
     margin-right: auto;
-  }
-  
-  .avatar {
+}
+
+.avatar {
     display: flex;
     width: 50px;
     height: 50px;
@@ -157,35 +158,47 @@
     margin-top: 2px;
     padding: 1px;
     background-color: #111b21;
-  }
-  
-  .conversations > div {
+}
+
+.conversations>div {
     display: flex;
     height: 60px;
     border: 1px solid #aebac1;
     border-radius: 5px;
     background-color: #54656f;
-    font-size: 1vw;
+    font-size: max(1vw, 10px);
     flex-direction: column;
     margin-bottom: 2px;
-  }
-  
-  .media {
+}
+
+.left-header>div {
+    display: flex;
+    margin-right: auto;
+    font-size: max(1vw, 10px);
+}
+
+@media screen and (max-width: 600px) {
+    .left-header .name {
+        display: none;
+    }
+}
+
+.media {
     display: flex;
     border-radius: 10px;
     position: relative;
     padding-bottom: 10px;
-  }
-  
-  .media-body {
+}
+
+.media-body {
     display: flex;
     flex-direction: column;
-  }
-  
-  .last-msg {
+}
+
+.last-msg {
     display: inline-block;
     position: relative;
-    font-size: calc((1vw + 2vh) / 2);
+    font-size: max(calc((1vw + 2vh) / 2), 8px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -194,18 +207,18 @@
     margin-bottom: auto;
     right: 5vw;
     color: #d1d7db;
-  }
-  
-  
-  .time {
+}
+
+
+.time {
     position: absolute;
     font-size: calc((1vw + 1vh) / 2);
-    color: #d1d7db;;
+    color: #d1d7db;
     bottom: 5px;
     right: 0.2vw;
-  }
-  
-  
+}
+
+
 
 /*general related*/
 
@@ -241,7 +254,7 @@
 /*send related*/
 .footer-btn {
     min-height: 6vh;
-    height: 6vh;
+    height: 100%;
     color: black;
     top: 0;
     background-color: #54656f;
@@ -252,12 +265,12 @@
     margin-top: auto;
     max-width: 80vw;
 }
-  
-  .media {
-    display: flex; /* Added */
-  }
-  
-  .current-conversation {
+
+.media {
+    display: flex;
+}
+
+.current-conversation {
     background-color: rgba(134, 163, 179, 0.5);
     background-clip: padding-box;
 }
