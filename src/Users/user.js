@@ -1,5 +1,4 @@
 export function AddUser(users, setUsers, userName, password, name, picture){
-    debugger;
     const newUser = {
         username: userName,
         password: password,
@@ -19,18 +18,30 @@ export function setCurr(curr, setCurrentUser) {
 }
 
 export function AddFriend(users, setUsers, currentUser, setCurrentUser, friendsName) {
-    debugger;
+    let newCurrUser = { ...currentUser };
+    if (!Array.isArray(newCurrUser.friends)) {
+        newCurrUser.friends = [];
+    }
+
+    let flag = false;
+
+    newCurrUser.friends.forEach((friend) => {
+        if (friendsName === friend.name) {
+            flag = true;
+            return;
+        }
+    });
+
+    if (flag) {
+        return;
+    }
+
     const profilePicture = 'photos/no_img.png';
     const newFriend = {
         name: friendsName,
         image: profilePicture,
         messages: []
     };
-
-    let newCurrUser = { ...currentUser };
-    if (!Array.isArray(newCurrUser.friends)) {
-        newCurrUser.friends = [];
-    }
 
     newCurrUser.friends.push(newFriend);
     newCurrUser.currFriend = newFriend;
@@ -69,4 +80,6 @@ export function AddMessage(users, setUsers, currentUser, setCurrentUser, friends
     localStorage.setItem('users', JSON.stringify(updatedUsers));
 }
 
-
+export function isNotConnected(currentUser) {
+    return Object.keys(currentUser).length === 0;
+}
