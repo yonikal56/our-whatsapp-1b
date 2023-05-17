@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import Conversation from "./Conversation";
+import {isNotConnected} from '../Users/user.js';
 import ConversationsHeader from './ConversationsHeader';
 
 function Conversations({currentUser, setCurrentUser}) {
     const conversationsData = currentUser && currentUser.friends ? currentUser.friends : [];
 
     const handleConversationClick = (conversation) => {
+        if (isNotConnected(currentUser)) return;
         setCurrentUser({
             ...currentUser,
-            currFriend: currentUser.friends.find(friend => friend.name === conversation.name),
+            currFriend: currentUser && currentUser.friends ? currentUser.friends.find(friend => friend.name === conversation.name) : '',
         });
     };
 
     useEffect(() => {
+        if (isNotConnected(currentUser)) return;
         handleConversationClick(currentUser.currFriend);
-    });
+    }, []);
 
     return (
         <div id="conversations-section">
