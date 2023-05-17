@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Background from '../background/Background.js';
-import FormBottom from '../formBottom/FormBottom.js';
-import FormItem from '../formItem/FormItem.js';
+import FormBottom from '../form/FormBottom.js';
+import FormItem from '../form/FormItem.js';
 import {AddUser, isNotConnected} from '../Users/user.js';
 import "./Register.css"
 

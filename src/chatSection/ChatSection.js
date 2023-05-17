@@ -1,5 +1,5 @@
-import Chat from "../chat/Chat";
-import ChatFooter from "../chatFooter/ChatFooter";
+import Chat from "./Chat";
+import ChatFooter from "./ChatFooter";
 
 function ChatSection({users, setUsers, currentUser, setCurrentUser}) {
     return (

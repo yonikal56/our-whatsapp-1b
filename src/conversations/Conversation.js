@@ -1,5 +1,4 @@
 function Conversation({ name, time, message: lastMessage, img: image, current}) {
-    debugger;
     let mediaClass = 'media' + (current ? ' current-conversation' : '');
   
     return (

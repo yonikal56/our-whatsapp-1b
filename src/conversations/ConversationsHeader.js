@@ -3,6 +3,7 @@ function ConversationsHeader({currentUser}) {
         <header className="left-header">
             <div className="media">
                 <img className="avatar" src={currentUser.image} alt="avatar" />
+                <div className="name">{currentUser.name}</div>
                 <div className="icon">
                     <svg data-bs-toggle="modal" data-bs-target="#newModal" width="32" height="32"
                         className="bi bi-person-add" viewBox="0 0 16 16">

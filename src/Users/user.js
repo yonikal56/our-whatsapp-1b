@@ -18,6 +18,12 @@ export function setCurr(curr, setCurrentUser) {
 }
 
 export function AddFriend(users, setUsers, currentUser, setCurrentUser, friendsName) {
+    friendsName = friendsName.trim()
+
+    if (friendsName.length === 0) {
+        return;
+    }
+
     let newCurrUser = { ...currentUser };
     if (!Array.isArray(newCurrUser.friends)) {
         newCurrUser.friends = [];
